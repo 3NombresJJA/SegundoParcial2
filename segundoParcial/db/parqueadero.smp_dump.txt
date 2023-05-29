@@ -1,0 +1,9 @@
+
+State Machine - |parqueadero|ant_state
+Name ant_state.ingreso ant_state.aprovado ant_state.tercero ant_state.segundo ant_state.primero ant_state.inicio 
+ant_state.inicio 0 0 0 0 0 0 
+ant_state.primero 0 0 0 0 1 1 
+ant_state.segundo 0 0 0 1 0 1 
+ant_state.tercero 0 0 1 0 0 1 
+ant_state.aprovado 0 1 0 0 0 1 
+ant_state.ingreso 1 0 0 0 0 1 

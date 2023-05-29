@@ -1,0 +1,6 @@
+
+State Machine - |SegundoParcialParte2|Actual
+Name Actual.Salida Actual.AsignacionTiempo Actual.InicioTiempo 
+Actual.InicioTiempo 0 0 0 
+Actual.AsignacionTiempo 0 1 1 
+Actual.Salida 1 0 1 

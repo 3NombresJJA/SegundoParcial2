@@ -1,0 +1,45 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+entity SegundoParcialParte2 is
+    Port (
+        clk : in std_logic;
+        rst : in std_logic;
+
+end SegundoParcialParte2;
+
+architecture blanco of SegundoParcialParte2 is
+    type state_type is (InicioTiempo, AsignacionTiempo, Salida);
+    signal Actual, Siguiente : state_type;
+
+signal Sigue: std_logic;
+begin
+reset : process (clk, Siguiente)
+BEGIN
+	IF reset = '1' THEN
+		Actual <= Inicio;
+	ELSIF clk='1' AND clk'event THEN
+		Actual <= Siguiente;
+	END IF;
+END PROCESS;
+logica : proCESS(Actual,Sigue)
+   
+	case Actual is
+      when InicioTiempo =>
+         if	(Sigue='1') then
+            Siguiente <= AsignacionTiempo;
+			end if;
+			
+      when AsignacionTiempo =>
+         if (Sigue='1') then
+            state <= out;
+         end if;
+			
+      when Salida =>
+         if condicion_de_transicion then
+            state <= InicioTiempo;
+         end if;
+      end case;
+end process;
+
+end blanco;

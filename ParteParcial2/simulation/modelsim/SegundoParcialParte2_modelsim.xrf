@@ -1,0 +1,11 @@
+vendor_name = ModelSim
+source_file = 1, D:/Documentos/DocumentosU/VHDL/ParteParcial2/SegundoParcialParte2.vhd
+source_file = 1, D:/Documentos/DocumentosU/VHDL/ParteParcial2/db/SegundoParcialParte2.cbx.xml
+source_file = 1, d:/quartus/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
+source_file = 1, d:/quartus/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
+source_file = 1, d:/quartus/quartus/libraries/vhdl/ieee/timing_b.vhd
+source_file = 1, d:/quartus/quartus/libraries/vhdl/ieee/timing_p.vhd
+design_name = SegundoParcialParte2
+instance = comp, \Sigue~input\, Sigue~input, SegundoParcialParte2, 1
+instance = comp, \clk~input\, clk~input, SegundoParcialParte2, 1
+instance = comp, \rst~input\, rst~input, SegundoParcialParte2, 1

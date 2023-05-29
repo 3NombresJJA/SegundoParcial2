@@ -1,0 +1,11 @@
+|SegundoParcialParte2
+clk => Actual~1.DATAIN
+rst => Actual~3.DATAIN
+Sigue => Selector0.IN2
+Sigue => Selector1.IN2
+Sigue => Selector2.IN2
+Sigue => Selector0.IN1
+Sigue => Selector1.IN1
+Sigue => Selector2.IN1
+
+

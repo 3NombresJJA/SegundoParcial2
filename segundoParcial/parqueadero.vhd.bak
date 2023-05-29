@@ -1,0 +1,119 @@
+library ieee;
+use ieee.std_logic_1164.all;
+entity parqueadero is
+	port(
+		Clock, Reset: in std_logic;
+		FRONT_SENSOR, BACK_SENSOR: in std_logic;
+		LED_R, LED_V: out std_logic);
+end parqueadero;
+architecture arq of parqueadero is
+	type estados is (inicio, primero, segundo, tercero, aprovado, ingreso);
+	signal ant_state, next_state : estados;
+begin
+secuencial : process (Reset, Clock)
+	begin
+		if Reset = '1' then
+			ant_state <= D;
+		elsif rising_edge(Clock) then 
+			ant_state <= next_state;
+		end if;
+	end process secuencial;
+combinacional : process (ant_state, FRONT_SENSOR, BACK_SENSOR)
+begin	
+	case (ant_state) is 
+	when inicio =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then 
+		next_state <= primero;
+	else
+		next_state <= inicio;
+	end if;
+		when primero =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		next_state <= segundo;
+	elsif 
+	(FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		next_state <= aprovado
+	else
+		next_state <= primero;
+	end if;
+	when segundo =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then 
+		next_state <= tercero;
+	elsif 
+	(FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		next_state <= aprovado;
+	else 
+		next_state <= sengundo ;
+	end if;
+	when tercero =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		next_state <= inicio ;
+	elsif 
+	(FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		next_state <= aprovado;
+	else
+		next_state <= aprovado ;
+	end if;
+	when aprovado =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then 
+		next_state <= aprovado;
+	else
+		next_state <= ingreso;
+	end if;
+	when ingreso =>
+	if (FRONT_SENSOR = '0') and (BACK_SENSOR = '0') then
+		next_state <= inicio;
+	else 
+		next_state <= ingreso ;
+	end if;
+	when others next_state <= inicio;
+	end case;
+end process;
+salida : process (ant_state, FRONT_SENSOR, BACK_SENSOR)
+begin 
+	case (ant_state) is 
+	when inicio =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then 
+		LED_V <= '0'; LED_R <= '1';
+	else
+		LED_V <= '0'; LED_R <= '0';
+	end if;
+		when primero =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		LED_V <= '0'; LED_R <= '1';
+	elsif 
+	(FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		LED_V <= '1'; LED_R <= '0';
+	else
+		LED_V <= '0'; LED_R <= '1';
+	end if;
+	when segundo =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then 
+		LED_V <= '0'; LED_R <= '1';
+	elsif 
+	(FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		LED_V <= '1'; LED_R <= '0';
+	else 
+		LED_V <= '0'; LED_R <= '1';
+	end if;
+	when tercero =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		LED_V <= '0'; LED_R <= '1';
+	elsif 
+	(FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then
+		LED_V <= '1'; LED_R <= '0';
+	else
+		LED_V <= '0'; LED_R <= '1';
+	end if;
+	when aprovado =>
+	if (FRONT_SENSOR = '1') and (BACK_SENSOR = '0') then 
+		LED_V <= '1'; LED_R <= '0';
+	else
+		LED_V <= '0'; LED_R <= '0';
+	end if;
+	when ingreso =>
+	if (FRONT_SENSOR = '0') and (BACK_SENSOR = '0') then
+		LED_V <= '1'; LED_R <= '0';
+	else 
+		LED_V <= '1'; LED_R <= '0';
+	end if;

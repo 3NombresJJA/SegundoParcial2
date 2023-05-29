@@ -1,0 +1,16 @@
+|parqueadero
+Clock => ant_state~1.DATAIN
+Reset => ant_state~3.DATAIN
+FRONT_SENSOR => salida.IN0
+FRONT_SENSOR => salida.IN0
+FRONT_SENSOR => combinacional.IN0
+BACK_SENSOR => salida.IN1
+BACK_SENSOR => salida.IN1
+BACK_SENSOR => combinacional.IN1
+contra => combinacional.IN1
+contra => salida.IN1
+contra => salida.IN1
+LED_R <= Selector6.DB_MAX_OUTPUT_PORT_TYPE
+LED_V <= Selector5.DB_MAX_OUTPUT_PORT_TYPE
+
+
